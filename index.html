@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zedník, instalatér a údržbář Děčín | MZ – Veškeré stavební práce</title>
 <meta name="description" content="Dvoučlenná parta z Děčína. Drobné opravy do 24 hodin i kompletní rekonstrukce koupelen a bytových jader. 500 Kč/hod, doprava po Děčíně zdarma. Volejte 775 356 068.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:title" content="Zedník, instalatér a údržbář Děčín | MZ">
+<meta property="og:description" content="Drobné opravy do dvou dnů i celé rekonstrukce koupelen. Děčín a okolí. 500 Kč/hod.">
+<meta property="og:site_name" content="MZ — Veškeré stavební práce">
+<!-- až budou fotky: doplnit og:image (1200x630) a og:url na ostrou doménu -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/Archivo-800-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/IBMPlexSans-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
@@ -45,7 +52,7 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
 .top{position:sticky;top:0;z-index:40;background:var(--graphite);color:var(--paper)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:60px}
 .mark{font-family:"Archivo";font-weight:800;font-size:1.2rem;letter-spacing:.06em;display:flex;align-items:center;gap:.6rem;text-decoration:none}
-.mark span{display:inline-block;background:var(--rule);color:var(--graphite);padding:.15em .45em;border-radius:2px}
+.mark .logo{height:22px;width:auto;display:block}
 .mark small{font-family:"IBM Plex Sans";font-weight:500;font-size:.72rem;letter-spacing:.02em;color:#AFB3B9;display:none}
 @media(min-width:720px){.mark small{display:block}}
 .tel-top{
@@ -56,8 +63,47 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
 .tel-top:hover{background:#FFD638}
 
 /* --- hero --- */
-.hero{background:var(--graphite);color:var(--paper);padding-top:clamp(3rem,7vw,5rem);padding-bottom:0;position:relative}
+.hero{
+  color:var(--paper);padding-top:clamp(3rem,7vw,5rem);padding-bottom:0;position:relative;overflow:hidden;
+  background:
+    radial-gradient(130% 100% at 12% -10%, #313740 0%, #262A30 45%, #1C1F23 100%),
+    var(--graphite);
+}
+/* jemná rastrová mřížka, aby plocha nebyla mrtvá */
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(to right, rgba(255,255,255,.045) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(to bottom, rgba(255,255,255,.045) 0 1px, transparent 1px 40px);
+  -webkit-mask-image:linear-gradient(to bottom right, rgba(0,0,0,.9), transparent 65%);
+  mask-image:linear-gradient(to bottom right, rgba(0,0,0,.9), transparent 65%);
+}
+.hero .wrap{position:relative;z-index:1}
+.hero-inner{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:960px){.hero-inner{grid-template-columns:1.1fr .9fr;gap:3.5rem}}
 .hero h1{color:var(--white);max-width:15ch}
+
+/* deska na hlavní fotku; dokud fotka chybí, drží ji podkresba */
+.plate{
+  position:relative;aspect-ratio:4/5;min-height:280px;
+  border:1px solid #454B54;
+  background-image:
+    url('img/hero.jpg'),
+    repeating-linear-gradient(to right, rgba(242,195,26,.10) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(to bottom, rgba(242,195,26,.10) 0 1px, transparent 1px 56px),
+    linear-gradient(160deg,#2B3038 0%,#1E2126 100%);
+  background-size:cover,auto,auto,auto;
+  background-position:center;
+  background-repeat:no-repeat,repeat,repeat,no-repeat;
+}
+/* žlutý roh — jediná ozdoba, drží pohled na desce */
+.plate::after{
+  content:"";position:absolute;left:0;bottom:0;width:64px;height:8px;background:var(--rule);
+}
+.plate span{
+  position:absolute;left:1rem;bottom:2rem;font-size:.82rem;color:#8E939A;max-width:80%;
+}
+@media(min-width:960px){.plate{aspect-ratio:3/4}}
 .hero .lede{color:#C9CCD1;font-size:clamp(1.05rem,2.2vw,1.28rem);margin-top:1.4rem;max-width:44ch}
 .actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
 .btn{
@@ -181,18 +227,25 @@ footer a{color:#C9CCD1}
 
 <header class="top">
   <div class="wrap">
-    <a href="#" class="mark"><span>MZ</span><small>Veškeré stavební práce · Děčín</small></a>
+    <a href="#" class="mark"><svg class="logo" viewBox="0 0 148 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M80 10 H148 V28 L106 72 H148 V90 H80 V72 L122 28 H80 Z" fill="#F2C31A"/><path d="M0 10 H18 L36 52 L54 10 H72 V90 H56 V38 L42 72 H30 L16 38 V90 H0 Z" fill="#F6F5F2"/></svg><small>Veškeré stavební práce · Děčín</small></a>
     <a href="tel:+420775356068" class="tel-top">775 356 068</a>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
-    <h1>Řemeslo pro Děčín a okolí. Od kapajícího kohoutku po celou koupelnu.</h1>
-    <p class="lede">Jsme dva a děláme spolu přes pět let. Drobnou opravu zvládneme většinou do dvou dnů, na rekonstrukci vám dopředu řekneme cenu i termín.</p>
-    <div class="actions">
-      <a href="tel:+420775356068" class="btn btn-primary">Zavolat 775 356 068</a>
-      <a href="#poptavka" class="btn btn-ghost">Poslat fotku problému</a>
+    <div class="hero-inner">
+      <div>
+        <h1>Řemeslo pro Děčín a okolí. Od kapajícího kohoutku po celou koupelnu.</h1>
+        <p class="lede">Jsme dva a děláme spolu přes pět let. Drobnou opravu zvládneme většinou do dvou dnů, na rekonstrukci vám dopředu řekneme cenu i termín.</p>
+        <div class="actions">
+          <a href="tel:+420775356068" class="btn btn-primary">Zavolat 775 356 068</a>
+          <a href="#poptavka" class="btn btn-ghost">Poslat fotku problému</a>
+        </div>
+      </div>
+      <!-- Až dorazí fotka: ulož ji jako img/hero.jpg (na výšku, cca 1200x1600).
+           Zobrazí se sama. Pak smaž řádek <span> níž. -->
+      <div class="plate"><span>Sem přijde hlavní fotka — hotová koupelna nebo vy dva při práci.</span></div>
     </div>
     <div class="facts">
       <div><b>500 Kč</b><span>za hodinu, nebo cena úkolem</span></div>
@@ -310,7 +363,7 @@ footer a{color:#C9CCD1}
         </tbody>
       </table>
     </div>
-    <p class="note">Ceny jsou bez materiálu. Uvedené částky jsou vzorové a je potřeba je nahradit vašimi skutečnými.</p>
+    <p class="note">Ceny jsou bez materiálu a jsou konečné — nejsme plátci DPH. Uvedené částky jsou vzorové a je potřeba je nahradit skutečnými.</p>
   </div>
 </section>
 
@@ -325,7 +378,7 @@ footer a{color:#C9CCD1}
       <div>
         <p>Jsme sehraná dvojka, která spolu pracuje víc než pět let. Jeden má na starosti vodu a instalace, druhý zdění, sádrokartony a dokončovací práce. Díky tomu zvládneme koupelnu od bourání po poslední silikon bez čekání na další firmy.</p>
         <p>Domlouváme se předem, držíme termíny a když nám něco nevyjde, řekneme to hned, ne až na konci. Nejvíc práce k nám chodí přes doporučení od zákazníků z Děčína a okolí.</p>
-        <p class="note" style="margin-top:1.4rem">Doplnit: křestní jména, IČO, případně oprávnění pro elektro.</p>
+        <p class="note" style="margin-top:1.4rem">Doplnit: křestní jméno kolegy a kdo z vás má co na starosti.</p>
       </div>
     </div>
   </div>
@@ -353,7 +406,7 @@ footer a{color:#C9CCD1}
         <a href="tel:+420775356068" class="big">775 356 068</a>
         <p class="sub">Po–Pá 7:00–18:00. Když to nezvedneme, jsme na střeše nebo pod vanou — zavoláme zpět.</p>
         <p class="sub" style="margin-top:1.5rem"><a href="mailto:info@veskerestavebniprace.cz">info@veskerestavebniprace.cz</a><br>Děčín, Ústecký kraj</p>
-        <p class="note" style="color:#8E939A">Doplnit: adresa provozovny, IČO, odkaz na firemní profil na Googlu.</p>
+        <p class="sub" style="margin-top:1.2rem">Matěj Bernášek, IČO 19430248<br>Rekreační 5, Martiněves, 405 02 Jílové<br>Nejsme plátci DPH — uvedené ceny jsou konečné.</p>
       </div>
       <form onsubmit="return false">
         <label for="jm">Jméno</label>
@@ -379,7 +432,7 @@ footer a{color:#C9CCD1}
 <footer>
   <div class="wrap">
     <div>MZ — Veškeré stavební práce · Děčín a Ústecký kraj</div>
-    <div><a href="zasady-osobnich-udaju.html">Zásady zpracování osobních údajů</a> · IČO 00000000 · <a href="tel:+420775356068">775 356 068</a></div>
+    <div><a href="zasady-osobnich-udaju.html">Zásady zpracování osobních údajů</a> · Matěj Bernášek, IČO 19430248 · <a href="tel:+420775356068">775 356 068</a></div>
   </div>
 </footer>
 
