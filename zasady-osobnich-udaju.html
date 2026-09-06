@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zásady zpracování osobních údajů | MZ – Veškeré stavební práce</title>
+<meta name="description" content="Jak nakládáme s osobními údaji z poptávkového formuláře.">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="fonts.css">
+<style>
+:root{
+  --graphite:#23262B;
+  --graphite-2:#33383F;
+  --paper:#F6F5F2;
+  --white:#FFFFFF;
+  --rule:#F2C31A;
+  --rule-dark:#C79C08;
+  --pencil:#6B6F76;
+  --line:#D9D6CE;
+  --measure: 66ch;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--graphite);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.display{font-family:"Archivo",system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.04;margin:0}
+h1{font-size:clamp(2.3rem,7vw,4.2rem)}
+h2{font-size:clamp(1.7rem,4.2vw,2.6rem)}
+h3{font-size:1.15rem;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+p{margin:0 0 1rem;max-width:var(--measure)}
+a{color:inherit}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+section{padding:clamp(3.5rem,8vw,6.5rem) 0}
+
+/* --- hlavička --- */
+.top{position:sticky;top:0;z-index:40;background:var(--graphite);color:var(--paper)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:60px}
+.mark{font-family:"Archivo";font-weight:800;font-size:1.2rem;letter-spacing:.06em;display:flex;align-items:center;gap:.6rem;text-decoration:none}
+.mark span{display:inline-block;background:var(--rule);color:var(--graphite);padding:.15em .45em;border-radius:2px}
+.mark small{font-family:"IBM Plex Sans";font-weight:500;font-size:.72rem;letter-spacing:.02em;color:#AFB3B9;display:none}
+@media(min-width:720px){.mark small{display:block}}
+.tel-top{
+  background:var(--rule);color:var(--graphite);text-decoration:none;
+  font-family:"Archivo";font-weight:700;font-size:1rem;
+  padding:.55rem 1rem;border-radius:3px;white-space:nowrap;
+}
+.tel-top:hover{background:#FFD638}
+
+/* --- hero --- */
+.hero{background:var(--graphite);color:var(--paper);padding-top:clamp(3rem,7vw,5rem);padding-bottom:0;position:relative}
+.hero h1{color:var(--white);max-width:15ch}
+.hero .lede{color:#C9CCD1;font-size:clamp(1.05rem,2.2vw,1.28rem);margin-top:1.4rem;max-width:44ch}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;
+  font-family:"Archivo";font-weight:700;font-size:1.05rem;
+  padding:.9rem 1.4rem;border-radius:3px;border:2px solid transparent;
+}
+.btn-primary{background:var(--rule);color:var(--graphite)}
+.btn-primary:hover{background:#FFD638}
+.btn-ghost{border-color:#565C64;color:var(--paper)}
+.btn-ghost:hover{border-color:var(--paper)}
+.facts{
+  display:flex;flex-wrap:wrap;gap:0;margin-top:3rem;
+  border-top:1px solid #3B4048;
+}
+.facts div{
+  flex:1 1 190px;padding:1.1rem 1.2rem 1.1rem 0;border-bottom:1px solid #3B4048;
+}
+.facts b{display:block;font-family:"Archivo";font-weight:700;font-size:1.35rem;color:var(--rule)}
+.facts span{font-size:.9rem;color:#AFB3B9}
+.hero-strip{height:14px;background:repeating-linear-gradient(135deg,var(--rule) 0 18px,var(--graphite) 18px 36px);margin-top:2.5rem}
+
+/* --- triáž --- */
+.paths{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+@media(min-width:860px){.paths{grid-template-columns:repeat(3,1fr)}}
+.path{background:var(--white);padding:1.8rem 1.6rem 2rem}
+.path .tag{font-size:.85rem;color:var(--pencil);margin-bottom:.5rem}
+.path h3{margin-bottom:.8rem}
+.path ul{margin:0 0 1.2rem;padding-left:1.1rem;color:var(--graphite-2);font-size:.97rem}
+.path li{margin-bottom:.35rem}
+.path .price{font-family:"Archivo";font-weight:700;font-size:1.05rem;border-top:2px solid var(--rule);padding-top:.7rem;display:inline-block}
+
+/* --- postup --- */
+.steps{counter-reset:s;display:grid;gap:1.6rem;margin-top:2.5rem}
+@media(min-width:800px){.steps{grid-template-columns:repeat(4,1fr);gap:1.2rem}}
+.step{counter-increment:s;padding-top:1rem;border-top:2px solid var(--graphite);position:relative}
+.step::before{
+  content:counter(s);font-family:"Archivo";font-weight:800;font-size:.9rem;
+  background:var(--graphite);color:var(--rule);
+  padding:.1rem .5rem;position:absolute;top:-1.05rem;left:0;
+}
+.step h3{margin:.9rem 0 .4rem}
+.step p{font-size:.95rem;color:var(--graphite-2);margin:0}
+
+/* --- fotky --- */
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:2rem}
+@media(min-width:800px){.gallery{grid-template-columns:repeat(4,1fr)}}
+.shot{
+  aspect-ratio:4/3;background:#E7E4DC;border:1px dashed #B9B5AA;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  color:var(--pencil);font-size:.82rem;padding:.8rem;
+}
+.shot.wide{grid-column:span 2}
+
+/* --- ceník --- */
+.pricing{background:var(--white);border:1px solid var(--line)}
+.pricing table{width:100%;border-collapse:collapse;font-size:1rem}
+.pricing td{padding:.85rem 1.3rem;border-bottom:1px solid var(--line)}
+.pricing tr:last-child td{border-bottom:none}
+.pricing td:last-child{text-align:right;font-family:"Archivo";font-weight:700;white-space:nowrap}
+.pricing tr:hover{background:#FBFAF7}
+.note{font-size:.9rem;color:var(--pencil);margin-top:1rem}
+
+/* --- o nás --- */
+.crew{display:grid;gap:2rem;align-items:start}
+@media(min-width:820px){.crew{grid-template-columns:1fr 1fr}}
+.portraits{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.portrait{aspect-ratio:3/4;background:#E7E4DC;border:1px dashed #B9B5AA;display:flex;align-items:flex-end;padding:.8rem;color:var(--pencil);font-size:.8rem}
+
+/* --- faq --- */
+details{border-bottom:1px solid var(--line);padding:1.1rem 0}
+details summary{font-family:"Archivo";font-weight:700;font-size:1.08rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";color:var(--rule-dark);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:.8rem 0 0;color:var(--graphite-2);font-size:.97rem}
+
+/* --- kontakt --- */
+.contact{background:var(--graphite);color:var(--paper)}
+.contact h2{color:var(--white)}
+.contact-grid{display:grid;gap:2.5rem;margin-top:2rem}
+@media(min-width:860px){.contact-grid{grid-template-columns:1fr 1fr;gap:4rem}}
+.contact a.big{
+  display:block;font-family:"Archivo";font-weight:800;
+  font-size:clamp(1.9rem,5vw,2.6rem);color:var(--rule);text-decoration:none;letter-spacing:-.02em;
+}
+.contact a.big:hover{text-decoration:underline}
+.contact .sub{color:#AFB3B9;font-size:.95rem}
+label{display:block;font-size:.88rem;color:#C9CCD1;margin:1rem 0 .35rem}
+input,textarea,select{
+  width:100%;padding:.75rem .85rem;font:inherit;font-size:1rem;
+  background:#2C3037;border:1px solid #464C55;border-radius:3px;color:var(--paper);
+}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--rule);outline-offset:1px;border-color:transparent}
+button{
+  margin-top:1.3rem;width:100%;padding:.95rem;border:none;border-radius:3px;
+  background:var(--rule);color:var(--graphite);font-family:"Archivo";font-weight:700;font-size:1.05rem;cursor:pointer;
+}
+button:hover{background:#FFD638}
+.gdpr{font-size:.8rem;color:#8E939A;margin-top:.9rem}
+
+footer{background:#1A1D21;color:#8E939A;font-size:.87rem;padding:2rem 0}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+footer a{color:#C9CCD1}
+
+/* sticky volat na mobilu */
+.callbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;
+  background:var(--rule);color:var(--graphite);text-decoration:none;
+  font-family:"Archivo";font-weight:800;font-size:1.1rem;
+  align-items:center;justify-content:center;gap:.5rem;padding:.95rem;
+  box-shadow:0 -2px 12px rgba(0,0,0,.18);
+}
+@media(min-width:720px){.callbar{display:none}}
+@media(max-width:719px){body{padding-bottom:60px}}
+:focus-visible{outline:3px solid var(--rule);outline-offset:2px}
+.eyebrow{font-size:.9rem;color:var(--pencil);margin-bottom:.7rem}
+
+.doc{max-width:70ch}
+.doc h2{margin-top:2.5rem;font-size:1.5rem}
+.doc h1{font-size:clamp(2rem,5vw,3rem);margin-bottom:1.5rem}
+.doc ul{padding-left:1.2rem}
+.doc li{margin-bottom:.4rem}
+.todo{background:#FFF6D6;border-left:3px solid var(--rule-dark);padding:.7rem 1rem;font-size:.9rem;margin:1rem 0}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a href="index.html" class="mark"><span>MZ</span><small>Veškeré stavební práce · Děčín</small></a>
+    <a href="tel:+420775356068" class="tel-top">775 356 068</a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap doc">
+    <h1>Zásady zpracování osobních údajů</h1>
+    <p>Tyto zásady popisují, jak nakládáme s osobními údaji, které nám pošlete přes poptávkový formulář nebo které nám sdělíte při domluvě zakázky.</p>
+
+    <div class="todo">K doplnění: přesný název, IČO a adresa. Datum účinnosti. Bez těchto údajů stránka neplní svůj účel.</div>
+
+    <h2>Kdo údaje zpracovává</h2>
+    <p>Správcem osobních údajů je [PŘESNÝ NÁZEV], IČO [IČO], se sídlem [ADRESA].<br>
+    Kontakt: <a href="tel:+420775356068">775 356 068</a>, [E-MAIL]</p>
+
+    <h2>Jaké údaje a proč</h2>
+    <p>Přes formulář od vás dostáváme jméno, telefon, případně e-mail a popis toho, co potřebujete. Používáme je jedině k tomu, abychom se vám ozvali, domluvili cenu a termín a zakázku odvedli.</p>
+    <p>Právním základem je plnění smlouvy a opatření před jejím uzavřením podle čl. 6 odst. 1 písm. b) GDPR. O souhlas vás proto nežádáme — bez těchto údajů bychom vám nemohli odpovědět na vlastní poptávku.</p>
+    <p>Pokud zakázku uskutečníme, zpracováváme dále fakturační údaje, a to z důvodu plnění právních povinností podle čl. 6 odst. 1 písm. c) GDPR (účetnictví a daně).</p>
+
+    <h2>Jak dlouho je uchováváme</h2>
+    <ul>
+      <li>Poptávky, ze kterých nevznikla zakázka: [XX] měsíců od poslední komunikace</li>
+      <li>Údaje k uskutečněným zakázkám: po dobu záruky a po dobu, kterou ukládají daňové předpisy (zpravidla 10 let)</li>
+    </ul>
+
+    <h2>Komu je předáváme</h2>
+    <p>Nikomu je neprodáváme ani nepředáváme k marketingu. Přístup k nim mohou mít pouze:</p>
+    <ul>
+      <li>poskytovatel e-mailové služby a hostingu webu</li>
+      <li>účetní firma, pokud jde o fakturační údaje</li>
+      <li>orgány veřejné moci, pokud nám to ukládá zákon</li>
+    </ul>
+    <div class="todo">K doplnění: konkrétní názvy poskytovatelů (hosting, e-mail, účetní). Obecná formulace nestačí, pokud se na to někdo zeptá.</div>
+
+    <h2>Vaše práva</h2>
+    <p>Máte právo na přístup ke svým údajům, na jejich opravu nebo výmaz, na omezení zpracování, na přenositelnost a právo vznést námitku. Stačí nám napsat nebo zavolat na kontakty výše.</p>
+    <p>Pokud máte za to, že s vašimi údaji nenakládáme správně, můžete se obrátit na Úřad pro ochranu osobních údajů, Pplk. Sochora 27, 170 00 Praha 7, <a href="https://uoou.gov.cz">uoou.gov.cz</a>.</p>
+
+    <h2>Cookies</h2>
+    <p>Tento web neukládá do vašeho prohlížeče žádné analytické ani marketingové cookies a nepoužívá měřicí ani reklamní nástroje třetích stran. Písma i veškeré soubory načítáme přímo z tohoto webu. Proto vás neobtěžujeme lištou se souhlasem — není co odsouhlasit.</p>
+
+    <p style="margin-top:2.5rem;color:var(--pencil);font-size:.9rem">Účinné od [DATUM].</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>MZ — Veškeré stavební práce · Děčín a Ústecký kraj</div>
+    <div><a href="index.html">Zpět na úvod</a> · <a href="tel:+420775356068">775 356 068</a></div>
+  </div>
+</footer>
+<a href="tel:+420775356068" class="callbar">Zavolat 775 356 068</a>
+</body>
+</html>
