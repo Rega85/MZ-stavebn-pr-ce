@@ -1,18 +1,29 @@
 LOGO MZ — přehled souborů
 
-mz-logo.svg              základní verze (grafit + žlutá), pro světlé pozadí
-mz-logo-inverze.svg      pro tmavé pozadí (světlé M)
-mz-logo-cerne.svg        jednobarevná verze — razítko, faktura, fax, rytina
-mz-logo-*.png            rastrové exporty s průhledným pozadím (512/1024/2048 px)
-mz-logo-512-bile-pozadi.png  pro místa, kde průhlednost nejde (Google profil)
+HLAVNÍ VERZE (bílé M, žluté Z) — pro tmavé pozadí, používá se na webu
+  mz-logo-bile.svg
+  mz-logo-bile-512/1024/2048.png     (průhledné pozadí)
+
+CELÉ BÍLÉ — jednobarevné, na fotky, tmavé plochy, polep dodávky
+  mz-logo-cele-bile.svg
+  mz-logo-cele-bile-512/1024/2048.png
+
+NA SVĚTLÉ POZADÍ (grafitové M, žluté Z) — faktury, dokumenty, bílý papír
+  mz-logo.svg
+  mz-logo-512/1024/2048.png
+  mz-logo-512-bile-pozadi.png        (pro místa bez průhlednosti, např. Google profil)
+
+JEDNOBAREVNÉ ČERNÉ — razítko, rytina, jednobarevný tisk
+  mz-logo-cerne.svg
 
 Barvy:
   grafit  #23262B
   žlutá   #F2C31A
+  bílá    #FFFFFF
 
-Ochranná zóna: kolem loga nechte volný prostor aspoň ve výšce písmene M.
-Logo nedeformujte, needitujte barvy, nedávejte na barevné pozadí bez kontrastu.
+Ochranná zóna: kolem loga nechte volno aspoň ve výšce písmene M.
+Logo nedeformujte, neměňte barvy, nedávejte na pozadí bez kontrastu.
 Nejmenší doporučená velikost: 24 px na výšku.
 
-SVG je vektor — dá se zvětšit na jakoukoli velikost bez ztráty kvality.
-Pro polepy a tisk dejte tiskaři vždy SVG, ne PNG.
+SVG je vektor — zvětší se na jakoukoli velikost bez ztráty kvality.
+Tiskaři vždy dávejte SVG, ne PNG.
