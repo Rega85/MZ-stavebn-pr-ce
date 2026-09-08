@@ -3,9 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zásady zpracování osobních údajů | MZ – Veškeré stavební práce</title>
-<meta name="description" content="Jak nakládáme s osobními údaji z poptávkového formuláře.">
-<meta name="robots" content="index,follow">
+<title>Poptávka odeslána | MZ – Veškeré stavební práce</title>
+<meta name="robots" content="noindex,follow">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="fonts.css">
 <style>
@@ -56,9 +55,46 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
 .tel-top:hover{background:#FFD638}
 
 /* --- hero --- */
-.hero{background:var(--graphite);color:var(--paper);padding-top:clamp(3rem,7vw,5rem);padding-bottom:0;position:relative}
-.hero h1{color:var(--white);max-width:15ch}
-.hero .lede{color:#C9CCD1;font-size:clamp(1.05rem,2.2vw,1.28rem);margin-top:1.4rem;max-width:44ch}
+.hero{
+  color:var(--paper);padding-top:clamp(3rem,7vw,5rem);padding-bottom:0;position:relative;overflow:hidden;
+  background:
+    radial-gradient(130% 100% at 12% -10%, #313740 0%, #262A30 45%, #1C1F23 100%),
+    var(--graphite);
+}
+/* jemná rastrová mřížka, aby plocha nebyla mrtvá */
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(to right, rgba(255,255,255,.045) 0 1px, transparent 1px 40px),
+    repeating-linear-gradient(to bottom, rgba(255,255,255,.045) 0 1px, transparent 1px 40px);
+  -webkit-mask-image:linear-gradient(to bottom right, rgba(0,0,0,.9), transparent 78%);
+  mask-image:linear-gradient(to bottom right, rgba(0,0,0,.9), transparent 78%);
+}
+.hero .wrap{position:relative;z-index:1}
+.hero-inner{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:960px){.hero-inner.s-foto{grid-template-columns:1.1fr .9fr;gap:3.5rem}}
+.hero h1{color:var(--white);max-width:17ch}
+
+/* deska na hlavní fotku; dokud fotka chybí, drží ji podkresba */
+.plate{
+  position:relative;aspect-ratio:4/5;min-height:280px;
+  border:1px solid #454B54;
+  background-image:
+    url('img/hero.webp'),
+    repeating-linear-gradient(to right, rgba(242,195,26,.10) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(to bottom, rgba(242,195,26,.10) 0 1px, transparent 1px 56px),
+    linear-gradient(160deg,#2B3038 0%,#1E2126 100%);
+  background-size:cover,auto,auto,auto;
+  background-position:center;
+  background-repeat:no-repeat,repeat,repeat,no-repeat;
+}
+/* žlutý roh — jediná ozdoba, drží pohled na desce */
+.plate::after{
+  content:"";position:absolute;left:0;bottom:0;width:64px;height:8px;background:var(--rule);
+}
+
+@media(min-width:960px){.plate{aspect-ratio:3/4}}
+.hero .lede{color:#C9CCD1;font-size:clamp(1.05rem,2.2vw,1.32rem);margin-top:1.5rem;max-width:52ch}
 .actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
 .btn{
   display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;
@@ -70,13 +106,13 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
 .btn-ghost{border-color:#565C64;color:var(--paper)}
 .btn-ghost:hover{border-color:var(--paper)}
 .facts{
-  display:flex;flex-wrap:wrap;gap:0;margin-top:3rem;
+  display:flex;flex-wrap:wrap;gap:0;margin-top:3.5rem;
   border-top:1px solid #3B4048;
 }
 .facts div{
   flex:1 1 190px;padding:1.1rem 1.2rem 1.1rem 0;border-bottom:1px solid #3B4048;
 }
-.facts b{display:block;font-family:"Archivo";font-weight:700;font-size:1.35rem;color:var(--rule)}
+.facts b{display:block;font-family:"Archivo";font-weight:700;font-size:clamp(1.45rem,3vw,1.9rem);color:var(--rule)}
 .facts span{font-size:.9rem;color:#AFB3B9}
 .hero-strip{height:14px;background:repeating-linear-gradient(135deg,var(--rule) 0 18px,var(--graphite) 18px 36px);margin-top:2.5rem}
 
@@ -103,14 +139,28 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
 .step p{font-size:.95rem;color:var(--graphite-2);margin:0}
 
 /* --- fotky --- */
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:2rem}
-@media(min-width:800px){.gallery{grid-template-columns:repeat(4,1fr)}}
-.shot{
-  aspect-ratio:4/3;background:#E7E4DC;border:1px dashed #B9B5AA;
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  color:var(--pencil);font-size:.82rem;padding:.8rem;
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:2rem}
+@media(min-width:760px){.ba{gap:1rem}}
+.ba figure{position:relative;margin:0;overflow:hidden;background:#E7E4DC}
+.ba img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.ba figcaption{
+  position:absolute;left:0;top:0;
+  font-family:"Archivo";font-weight:800;font-size:.8rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:.4rem .8rem;
 }
-.shot.wide{grid-column:span 2}
+.ba .pred figcaption{background:var(--graphite);color:var(--paper)}
+.ba .po figcaption{background:var(--rule);color:var(--graphite)}
+.ba-popis{font-size:.92rem;color:var(--pencil);margin-top:.9rem}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-top:2.5rem}
+@media(min-width:760px){.gallery{grid-template-columns:repeat(4,1fr);gap:.75rem}}
+.shot{position:relative;margin:0;background:#E7E4DC;overflow:hidden}
+.shot img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.shot figcaption{
+  position:absolute;left:0;bottom:0;
+  background:var(--graphite);color:var(--rule);
+  font-family:"Archivo";font-weight:700;font-size:.72rem;letter-spacing:.04em;
+  text-transform:uppercase;padding:.3rem .6rem;
+}
 
 /* --- ceník --- */
 .pricing{background:var(--white);border:1px solid var(--line)}
@@ -125,7 +175,9 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
 .crew{display:grid;gap:2rem;align-items:start}
 @media(min-width:820px){.crew{grid-template-columns:1fr 1fr}}
 .portraits{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-.portrait{aspect-ratio:3/4;background:#E7E4DC;border:1px dashed #B9B5AA;display:flex;align-items:flex-end;padding:.8rem;color:var(--pencil);font-size:.8rem}
+.portrait{background:var(--graphite);color:var(--paper);padding:1.3rem 1.1rem 1.5rem;border-bottom:5px solid var(--rule)}
+.portrait b{display:block;font-family:"Archivo";font-weight:800;font-size:1.5rem;color:var(--white);letter-spacing:-.01em}
+.portrait span{display:block;font-size:.85rem;color:#AFB3B9;margin-top:.35rem}
 
 /* --- faq --- */
 details{border-bottom:1px solid var(--line);padding:1.1rem 0}
@@ -158,6 +210,7 @@ button{
 }
 button:hover{background:#FFD638}
 .gdpr{font-size:.8rem;color:#8E939A;margin-top:.9rem}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
 
 footer{background:#1A1D21;color:#8E939A;font-size:.87rem;padding:2rem 0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
@@ -180,12 +233,10 @@ footer .credit a:hover{color:var(--rule);border-bottom-color:var(--rule)}
 :focus-visible{outline:3px solid var(--rule);outline-offset:2px}
 .eyebrow{font-size:.9rem;color:var(--pencil);margin-bottom:.7rem}
 
-.doc{max-width:70ch}
-.doc h2{margin-top:2.5rem;font-size:1.5rem}
-.doc h1{font-size:clamp(2rem,5vw,3rem);margin-bottom:1.5rem}
-.doc ul{padding-left:1.2rem}
-.doc li{margin-bottom:.4rem}
-.todo{background:#FFF6D6;border-left:3px solid var(--rule-dark);padding:.7rem 1rem;font-size:.9rem;margin:1rem 0}
+.dek{text-align:center;padding-block:clamp(4rem,12vw,8rem)}
+.dek h1{font-size:clamp(2rem,6vw,3.4rem);color:var(--white);max-width:16ch;margin-inline:auto}
+.dek p{color:#C9CCD1;font-size:1.1rem;max-width:46ch;margin:1.5rem auto 0}
+.dek .actions{justify-content:center}
 </style>
 </head>
 <body>
@@ -196,52 +247,22 @@ footer .credit a:hover{color:var(--rule);border-bottom-color:var(--rule)}
   </div>
 </header>
 
-<section>
-  <div class="wrap doc">
-    <h1>Zásady zpracování osobních údajů</h1>
-    <p>Tyto zásady popisují, jak nakládáme s osobními údaji, které nám pošlete přes poptávkový formulář nebo které nám sdělíte při domluvě zakázky.</p>
-
-    <h2>Kdo údaje zpracovává</h2>
-    <p>Správcem osobních údajů je <strong>Matěj Bernášek</strong>, IČO 19430248, se sídlem Rekreační 5, Martiněves, 405 02 Jílové.<br>
-    Kontakt: <a href="tel:+420775356068">775 356 068</a>, <a href="mailto:veskerestavebniprace01@gmail.com">veskerestavebniprace01@gmail.com</a></p>
-
-    <h2>Jaké údaje a proč</h2>
-    <p>Přes formulář od vás dostáváme jméno, telefon, případně e-mail a popis toho, co potřebujete. Používáme je jedině k tomu, abychom se vám ozvali, domluvili cenu a termín a zakázku odvedli.</p>
-    <p>Právním základem je plnění smlouvy a opatření před jejím uzavřením podle čl. 6 odst. 1 písm. b) GDPR. O souhlas vás proto nežádáme — bez těchto údajů bychom vám nemohli odpovědět na vlastní poptávku.</p>
-    <p>Pokud zakázku uskutečníme, zpracováváme dále fakturační údaje, a to z důvodu plnění právních povinností podle čl. 6 odst. 1 písm. c) GDPR (účetnictví a daně).</p>
-
-    <h2>Jak dlouho je uchováváme</h2>
-    <ul>
-      <li>Poptávky, ze kterých nevznikla zakázka: 12 měsíců od poslední komunikace</li>
-      <li>Údaje k uskutečněným zakázkám: po dobu záruky a po dobu, kterou ukládají daňové předpisy (zpravidla 10 let)</li>
-    </ul>
-
-    <h2>Komu je předáváme</h2>
-    <p>Nikomu je neprodáváme ani nepředáváme k marketingu. Přístup k nim mohou mít pouze:</p>
-    <ul>
-      <li>Google Ireland Limited — provoz e-mailové schránky, přes kterou nám poptávka dorazí</li>
-      <li>Vercel Inc. — hosting tohoto webu</li>
-      <li>Web3Forms — odeslání poptávky z formuláře do naší e-mailové schránky</li>
-      <li>externí účetní, pokud jde o fakturační údaje k uskutečněné zakázce</li>
-      <li>orgány veřejné moci, pokud nám to ukládá zákon</li>
-    </ul>
-    <p>Někteří z uvedených poskytovatelů zpracovávají údaje i mimo Evropskou unii. Děje se tak na základě standardních záruk podle kapitoly V GDPR.</p>
-
-    <h2>Vaše práva</h2>
-    <p>Máte právo na přístup ke svým údajům, na jejich opravu nebo výmaz, na omezení zpracování, na přenositelnost a právo vznést námitku. Stačí nám napsat nebo zavolat na kontakty výše.</p>
-    <p>Pokud máte za to, že s vašimi údaji nenakládáme správně, můžete se obrátit na Úřad pro ochranu osobních údajů, Pplk. Sochora 27, 170 00 Praha 7, <a href="https://uoou.gov.cz">uoou.gov.cz</a>.</p>
-
-    <h2>Cookies</h2>
-    <p>Tento web neukládá do vašeho prohlížeče žádné analytické ani marketingové cookies a nepoužívá měřicí ani reklamní nástroje třetích stran. Písma i veškeré soubory načítáme přímo z tohoto webu. Proto vás neobtěžujeme lištou se souhlasem — není co odsouhlasit.</p>
-
-    <p style="margin-top:2.5rem;color:var(--pencil);font-size:.9rem">Účinné od 8. 9. 2026.</p>
+<section class="hero dek">
+  <div class="wrap">
+    <h1>Poptávka dorazila. Ozveme se.</h1>
+    <p>Většinou odpovídáme do 24 hodin, ve všední dny obvykle dřív. Když to spěchá, klidně rovnou zavolejte — bereme telefon od 7 do 18.</p>
+    <div class="actions">
+      <a href="tel:+420775356068" class="btn btn-primary">Zavolat 775 356 068</a>
+      <a href="index.html" class="btn btn-ghost">Zpět na úvod</a>
+    </div>
   </div>
+  <div class="hero-strip" aria-hidden="true"></div>
 </section>
 
 <footer>
   <div class="wrap">
     <div>MZ — Veškeré stavební práce · Děčín a Ústecký kraj</div>
-    <div><a href="index.html">Zpět na úvod</a> · <a href="tel:+420775356068">775 356 068</a></div>
+    <div><a href="zasady-osobnich-udaju.html">Zásady zpracování osobních údajů</a> · Matěj Bernášek, IČO 19430248</div>
     <div class="credit">Web: <a href="https://razdvaweb.cz" target="_blank" rel="noopener">razdvaweb.cz</a></div>
   </div>
 </footer>

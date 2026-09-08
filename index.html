@@ -219,6 +219,7 @@ button{
 }
 button:hover{background:#FFD638}
 .gdpr{font-size:.8rem;color:#8E939A;margin-top:.9rem}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
 
 footer{background:#1A1D21;color:#8E939A;font-size:.87rem;padding:2rem 0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
@@ -246,7 +247,7 @@ footer .credit a:hover{color:var(--rule);border-bottom-color:var(--rule)}
 
 <header class="top">
   <div class="wrap">
-    <a href="#" class="mark"><svg class="logo" viewBox="0 0 148 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M80 10 H148 V28 L106 72 H148 V90 H80 V72 L122 28 H80 Z" fill="#F2C31A"/><path d="M0 10 H18 L36 52 L54 10 H72 V90 H56 V38 L42 72 H30 L16 38 V90 H0 Z" fill="#FFFFFF"/></svg><small>Veškeré stavební práce · Děčín</small></a>
+    <a href="#" class="mark"><svg class="logo" viewBox="0 0 148 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M80 10 H148 V28 L106 72 H148 V90 H80 V72 L122 28 H80 Z" fill="#FFFFFF"/><path d="M0 10 H18 L36 52 L54 10 H72 V90 H56 V38 L42 72 H30 L16 38 V90 H0 Z" fill="#FFFFFF"/></svg><small>Veškeré stavební práce · Děčín</small></a>
     <a href="tel:+420775356068" class="tel-top">775 356 068</a>
   </div>
 </header>
@@ -423,20 +424,29 @@ footer .credit a:hover{color:var(--rule);border-bottom-color:var(--rule)}
         <p class="sub" style="margin-top:1.5rem"><a href="mailto:info@veskerestavebniprace.cz">info@veskerestavebniprace.cz</a><br>Děčín, Ústecký kraj</p>
         <p class="sub" style="margin-top:1.2rem">Matěj Bernášek, IČO 19430248<br>Rekreační 5, Martiněves, 405 02 Jílové<br>Nejsme plátci DPH — uvedené ceny jsou konečné.</p>
       </div>
-      <form onsubmit="return false">
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="242c0803-1c4f-4e9f-9463-4d2d2e543fa9">
+        <input type="hidden" name="subject" value="Nová poptávka z webu">
+        <input type="hidden" name="from_name" value="Web MZ">
+        <!-- po převodu domény přepsat na https://veskerestavebniprace.cz/dekujeme.html -->
+        <input type="hidden" name="redirect" value="https://mz-stavebn-pr-ce.vercel.app/dekujeme.html">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
         <label for="jm">Jméno</label>
-        <input id="jm" name="jmeno" type="text" autocomplete="name" required>
+        <input id="jm" name="Jméno" type="text" autocomplete="name" required>
         <label for="tl">Telefon</label>
-        <input id="tl" name="telefon" type="tel" autocomplete="tel" required>
+        <input id="tl" name="Telefon" type="tel" autocomplete="tel" required>
+        <label for="em">E-mail (nepovinné)</label>
+        <input id="em" name="E-mail" type="email" autocomplete="email">
         <label for="ty">Co potřebujete</label>
-        <select id="ty" name="typ">
+        <select id="ty" name="Typ práce">
           <option>Drobná oprava nebo údržba</option>
           <option>Rekonstrukce koupelny nebo jádra</option>
           <option>Stavební a dokončovací práce</option>
           <option>Něco jiného</option>
         </select>
         <label for="zp">Popis</label>
-        <textarea id="zp" name="zprava" rows="4" placeholder="Např. kape kohoutek u umyvadla, panelák v Boleticích"></textarea>
+        <textarea id="zp" name="Popis" rows="4" placeholder="Např. kape kohoutek u umyvadla, panelák v Boleticích"></textarea>
         <button type="submit">Odeslat poptávku</button>
         <p class="gdpr">Vaše údaje zpracováváme jen kvůli vyřízení této poptávky, na základě čl. 6 odst. 1 písm. b) GDPR (opatření před uzavřením smlouvy). Nikam je nepředáváme. Podrobnosti najdete v <a href="zasady-osobnich-udaju.html" style="color:var(--rule)">zásadách zpracování osobních údajů</a>.</p>
       </form>

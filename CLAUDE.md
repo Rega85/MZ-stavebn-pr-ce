@@ -22,15 +22,26 @@ Nasazení: GitHub → Vercel, preset "Other", prázdný build command.
 **Žádné závislosti.** Ani npm, ani build nástroj, ani framework. Když se zdá, že
 je něco potřeba, není — je to statická stránka pro řemeslníka.
 
-**Žádné externí requesty.** Ani fonty, ani analytika, ani ikony z CDN, ani
-mapy. Web schválně nenačítá nic z cizí domény, aby nepotřeboval cookie lištu.
-To je vlastnost, ne opomenutí, a je to tak popsané v zásadách zpracování údajů.
-Cokoliv přidaného zvenčí tenhle slib ruší.
+**Žádné externí requesty při načtení stránky.** Ani fonty, ani analytika, ani
+ikony z CDN, ani mapy. Otevření webu nesmí sáhnout na cizí doménu — díky tomu
+nepotřebuje cookie lištu.
+
+Odeslání formuláře je výjimka a je v pořádku: požadavek spouští sám uživatel
+kliknutím, nic se neukládá do prohlížeče a souhlas se nevyžaduje. Zpracovatel
+ale musí být uvedený v zásadách zpracování — Web3Forms tam je.
 
 **CSS zůstává inline v `<style>` v každé stránce.** Nerozděluj do souborů.
 
-**Formulář zatím nikam neposílá.** Napojení řeším až po schválení vzhledu.
-Až na to dojde: serverless endpoint na Vercelu + Resend. Ne dřív.
+**Formulář odesílá přes Web3Forms** (`api.web3forms.com/submit`), poptávka chodí
+na `veskerestavebniprace01@gmail.com`. Zdarma do 250 zpráv měsíčně, bez serveru.
+Access key je veřejně v HTML — tak to má být; zneužít se přes něj nedá nic kromě
+posílání zpráv na tu jednu adresu, proti čemuž je ve formuláři honeypot (`botcheck`).
+
+Původně byl v plánu Vercel serverless + Resend. Zahozeno kvůli rozpočtu klienta.
+Nevracet se k tomu bez důvodu.
+
+Po odeslání se přesměrovává na `dekujeme.html`. Adresa přesměrování je zatím
+vercel.app — **po převodu domény přepsat** na ostrou adresu.
 
 **Souhlas není právní titul pro poptávkový formulář.** Zpracování stojí na
 čl. 6 odst. 1 písm. b) GDPR. Nepřidávej zaškrtávátko „souhlasím se
