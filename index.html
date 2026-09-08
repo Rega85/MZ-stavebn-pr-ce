@@ -10,7 +10,8 @@
 <meta property="og:title" content="Zedník, instalatér a údržbář Děčín | MZ">
 <meta property="og:description" content="Drobné opravy do dvou dnů i celé rekonstrukce koupelen. Děčín a okolí. 500 Kč/hod.">
 <meta property="og:site_name" content="MZ — Veškeré stavební práce">
-<!-- až budou fotky: doplnit og:image (1200x630) a og:url na ostrou doménu -->
+<meta property="og:image" content="img/og.jpg">
+<!-- po nasazení na ostrou doménu: og:image a og:url na absolutní URL -->
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/Archivo-800-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/IBMPlexSans-400-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
@@ -75,20 +76,20 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
   background-image:
     repeating-linear-gradient(to right, rgba(255,255,255,.045) 0 1px, transparent 1px 40px),
     repeating-linear-gradient(to bottom, rgba(255,255,255,.045) 0 1px, transparent 1px 40px);
-  -webkit-mask-image:linear-gradient(to bottom right, rgba(0,0,0,.9), transparent 65%);
-  mask-image:linear-gradient(to bottom right, rgba(0,0,0,.9), transparent 65%);
+  -webkit-mask-image:linear-gradient(to bottom right, rgba(0,0,0,.9), transparent 78%);
+  mask-image:linear-gradient(to bottom right, rgba(0,0,0,.9), transparent 78%);
 }
 .hero .wrap{position:relative;z-index:1}
 .hero-inner{display:grid;gap:2.5rem;align-items:center}
-@media(min-width:960px){.hero-inner{grid-template-columns:1.1fr .9fr;gap:3.5rem}}
-.hero h1{color:var(--white);max-width:15ch}
+@media(min-width:960px){.hero-inner.s-foto{grid-template-columns:1.1fr .9fr;gap:3.5rem}}
+.hero h1{color:var(--white);max-width:17ch}
 
 /* deska na hlavní fotku; dokud fotka chybí, drží ji podkresba */
 .plate{
   position:relative;aspect-ratio:4/5;min-height:280px;
   border:1px solid #454B54;
   background-image:
-    url('img/hero.jpg'),
+    url('img/hero.webp'),
     repeating-linear-gradient(to right, rgba(242,195,26,.10) 0 1px, transparent 1px 56px),
     repeating-linear-gradient(to bottom, rgba(242,195,26,.10) 0 1px, transparent 1px 56px),
     linear-gradient(160deg,#2B3038 0%,#1E2126 100%);
@@ -100,11 +101,9 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
 .plate::after{
   content:"";position:absolute;left:0;bottom:0;width:64px;height:8px;background:var(--rule);
 }
-.plate span{
-  position:absolute;left:1rem;bottom:2rem;font-size:.82rem;color:#8E939A;max-width:80%;
-}
+
 @media(min-width:960px){.plate{aspect-ratio:3/4}}
-.hero .lede{color:#C9CCD1;font-size:clamp(1.05rem,2.2vw,1.28rem);margin-top:1.4rem;max-width:44ch}
+.hero .lede{color:#C9CCD1;font-size:clamp(1.05rem,2.2vw,1.32rem);margin-top:1.5rem;max-width:52ch}
 .actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
 .btn{
   display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;
@@ -116,13 +115,13 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
 .btn-ghost{border-color:#565C64;color:var(--paper)}
 .btn-ghost:hover{border-color:var(--paper)}
 .facts{
-  display:flex;flex-wrap:wrap;gap:0;margin-top:3rem;
+  display:flex;flex-wrap:wrap;gap:0;margin-top:3.5rem;
   border-top:1px solid #3B4048;
 }
 .facts div{
   flex:1 1 190px;padding:1.1rem 1.2rem 1.1rem 0;border-bottom:1px solid #3B4048;
 }
-.facts b{display:block;font-family:"Archivo";font-weight:700;font-size:1.35rem;color:var(--rule)}
+.facts b{display:block;font-family:"Archivo";font-weight:700;font-size:clamp(1.45rem,3vw,1.9rem);color:var(--rule)}
 .facts span{font-size:.9rem;color:#AFB3B9}
 .hero-strip{height:14px;background:repeating-linear-gradient(135deg,var(--rule) 0 18px,var(--graphite) 18px 36px);margin-top:2.5rem}
 
@@ -149,14 +148,16 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
 .step p{font-size:.95rem;color:var(--graphite-2);margin:0}
 
 /* --- fotky --- */
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:2rem}
-@media(min-width:800px){.gallery{grid-template-columns:repeat(4,1fr)}}
-.shot{
-  aspect-ratio:4/3;background:#E7E4DC;border:1px dashed #B9B5AA;
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  color:var(--pencil);font-size:.82rem;padding:.8rem;
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-top:2rem}
+@media(min-width:760px){.gallery{grid-template-columns:repeat(3,1fr);gap:.75rem}}
+.shot{position:relative;margin:0;background:#E7E4DC;overflow:hidden}
+.shot img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.shot figcaption{
+  position:absolute;left:0;bottom:0;
+  background:var(--graphite);color:var(--rule);
+  font-family:"Archivo";font-weight:700;font-size:.72rem;letter-spacing:.04em;
+  text-transform:uppercase;padding:.3rem .6rem;
 }
-.shot.wide{grid-column:span 2}
 
 /* --- ceník --- */
 .pricing{background:var(--white);border:1px solid var(--line)}
@@ -171,7 +172,9 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
 .crew{display:grid;gap:2rem;align-items:start}
 @media(min-width:820px){.crew{grid-template-columns:1fr 1fr}}
 .portraits{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-.portrait{aspect-ratio:3/4;background:#E7E4DC;border:1px dashed #B9B5AA;display:flex;align-items:flex-end;padding:.8rem;color:var(--pencil);font-size:.8rem}
+.portrait{background:var(--graphite);color:var(--paper);padding:1.3rem 1.1rem 1.5rem;border-bottom:5px solid var(--rule)}
+.portrait b{display:block;font-family:"Archivo";font-weight:800;font-size:1.5rem;color:var(--white);letter-spacing:-.01em}
+.portrait span{display:block;font-size:.85rem;color:#AFB3B9;margin-top:.35rem}
 
 /* --- faq --- */
 details{border-bottom:1px solid var(--line);padding:1.1rem 0}
@@ -208,6 +211,10 @@ button:hover{background:#FFD638}
 footer{background:#1A1D21;color:#8E939A;font-size:.87rem;padding:2rem 0}
 footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
 footer a{color:#C9CCD1}
+footer .credit{width:100%;padding-top:1.1rem;margin-top:.4rem;border-top:1px solid #2A2E33;font-size:.82rem;color:#6E7379}
+footer .credit a{color:#9AA0A7;text-decoration:none;border-bottom:1px solid #3B4048}
+footer .credit a:hover{color:var(--rule);border-bottom-color:var(--rule)}
+
 
 /* sticky volat na mobilu */
 .callbar{
@@ -234,7 +241,7 @@ footer a{color:#C9CCD1}
 
 <section class="hero">
   <div class="wrap">
-    <div class="hero-inner">
+    <div class="hero-inner s-foto">
       <div>
         <h1>Řemeslo pro Děčín a okolí. Od kapajícího kohoutku po celou koupelnu.</h1>
         <p class="lede">Jsme dva a děláme spolu přes pět let. Drobnou opravu zvládneme většinou do dvou dnů, na rekonstrukci vám dopředu řekneme cenu i termín.</p>
@@ -243,9 +250,7 @@ footer a{color:#C9CCD1}
           <a href="#poptavka" class="btn btn-ghost">Poslat fotku problému</a>
         </div>
       </div>
-      <!-- Až dorazí fotka: ulož ji jako img/hero.jpg (na výšku, cca 1200x1600).
-           Zobrazí se sama. Pak smaž řádek <span> níž. -->
-      <div class="plate"><span>Sem přijde hlavní fotka — hotová koupelna nebo vy dva při práci.</span></div>
+      <div class="plate"></div>
     </div>
     <div class="facts">
       <div><b>500 Kč</b><span>za hodinu, nebo cena úkolem</span></div>
@@ -331,14 +336,17 @@ footer a{color:#C9CCD1}
     <h2>Hotové zakázky</h2>
     <p style="margin-top:.9rem">Fotky z realizací v Děčíně a okolí. U rekonstrukcí ukazujeme stav před i po.</p>
     <div class="gallery">
-      <div class="shot wide">FOTO — koupelna po rekonstrukci, celkový pohled</div>
-      <div class="shot">FOTO — stav před</div>
-      <div class="shot">FOTO — detail obkladu</div>
-      <div class="shot">FOTO — sádrokartonový podhled</div>
-      <div class="shot">FOTO — položená plovoucí podlaha</div>
-      <div class="shot wide">FOTO — bytové jádro, před a po</div>
+      <figure class="shot"><img src="img/koupelna-pred-rekonstrukci.webp" alt="Koupelna v panelovém bytě před rekonstrukcí" loading="lazy" width="1050" height="1400"><figcaption>Před</figcaption></figure>
+      <figure class="shot"><img src="img/bourani-bytoveho-jadra.webp" alt="Vybourané bytové jádro připravené na nové rozvody" loading="lazy" width="1050" height="1400"><figcaption>Bourání</figcaption></figure>
+      <figure class="shot"><img src="img/bourani-pricky.webp" alt="Bourání příčky bytového jádra" loading="lazy" width="1050" height="1400"><figcaption>Bourání</figcaption></figure>
+      <figure class="shot"><img src="img/nove-rozvody-vody-a-odpadu.webp" alt="Nové rozvody vody a odpadu ve vysekaných drážkách" loading="lazy" width="1050" height="1400"><figcaption>Rozvody</figcaption></figure>
+      <figure class="shot"><img src="img/obkladani-koupelny.webp" alt="Obkládání stěn koupelny velkoformátovým obkladem" loading="lazy" width="1050" height="1400"><figcaption>Obklady</figcaption></figure>
+      <figure class="shot"><img src="img/usazena-vana-a-obklad.webp" alt="Usazená vana a hotový obklad stěny" loading="lazy" width="1050" height="1400"><figcaption>Obklady</figcaption></figure>
+      <figure class="shot"><img src="img/predstena-podomitkova-nadrzka.webp" alt="Předstěna pro podomítkovou nádržku a nové rozvody" loading="lazy" width="1050" height="1400"><figcaption>Instalace</figcaption></figure>
+      <figure class="shot"><img src="img/koupelna-po-rekonstrukci.webp" alt="Hotová koupelna po kompletní rekonstrukci" loading="lazy" width="1050" height="1400"><figcaption>Hotovo</figcaption></figure>
+      <figure class="shot"><img src="img/koupelna-detail-obklad-vany.webp" alt="Detail obkladu vany a spárování" loading="lazy" width="1050" height="1400"><figcaption>Hotovo</figcaption></figure>
     </div>
-    <p class="note">Placeholdery. Sem patří 12–20 skutečných fotek z vlastních zakázek — bez nich stránka nefunguje.</p>
+    <p class="note">Rekonstrukce koupelny a bytového jádra v panelovém bytě — od vybourání po předání.</p>
   </div>
 </section>
 
@@ -372,13 +380,13 @@ footer a{color:#C9CCD1}
     <h2>Kdo k vám přijede</h2>
     <div class="crew" style="margin-top:2rem">
       <div class="portraits">
-        <div class="portrait">FOTO — jméno, co dělá</div>
-        <div class="portrait">FOTO — jméno, co dělá</div>
+        <div class="portrait"><b>Matěj</b><span>Zdění, obklady, instalace</span></div>
+        <div class="portrait"><b>Zdeněk</b><span>Sádrokartony, omítky, dokončovky</span></div>
       </div>
       <div>
-        <p>Jsme sehraná dvojka, která spolu pracuje víc než pět let. Jeden má na starosti vodu a instalace, druhý zdění, sádrokartony a dokončovací práce. Díky tomu zvládneme koupelnu od bourání po poslední silikon bez čekání na další firmy.</p>
-        <p>Domlouváme se předem, držíme termíny a když nám něco nevyjde, řekneme to hned, ne až na konci. Nejvíc práce k nám chodí přes doporučení od zákazníků z Děčína a okolí.</p>
-        <p class="note" style="margin-top:1.4rem">Doplnit: křestní jméno kolegy a kdo z vás má co na starosti.</p>
+        <p>Jsme Matěj a Zdeněk a pracujeme spolu přes pět let. Oba děláme všechno, takže koupelnu zvládneme od vybourání po poslední silikon bez čekání na další firmy. Nejradši máme sádrokartony a omítky — a je to na nich vidět.</p>
+        <p>Domlouváme se předem, držíme termíny a když nám něco nevyjde, řekneme to hned, ne až na konci. Cenu říkáme až po tom, co si práci na místě prohlédneme a změříme — nikdy si nevymýšlíme částku po telefonu.</p>
+        <p class="note" style="margin-top:1.4rem">Ověřit u klienta: rozdělení prací mezi Matěje a Zdeňka (v podkladech stojí „oba děláme všechno") a správné IČO Zdeňka.</p>
       </div>
     </div>
   </div>
@@ -433,6 +441,7 @@ footer a{color:#C9CCD1}
   <div class="wrap">
     <div>MZ — Veškeré stavební práce · Děčín a Ústecký kraj</div>
     <div><a href="zasady-osobnich-udaju.html">Zásady zpracování osobních údajů</a> · Matěj Bernášek, IČO 19430248 · <a href="tel:+420775356068">775 356 068</a></div>
+    <div class="credit">Web: <a href="https://razdvaweb.cz" target="_blank" rel="noopener">razdvaweb.cz</a></div>
   </div>
 </footer>
 
