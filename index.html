@@ -241,6 +241,24 @@ footer .credit a:hover{color:var(--rule);border-bottom-color:var(--rule)}
 @media(max-width:719px){body{padding-bottom:60px}}
 :focus-visible{outline:3px solid var(--rule);outline-offset:2px}
 .eyebrow{font-size:.9rem;color:var(--pencil);margin-bottom:.7rem}
+/* --- informacni liska o cookies --- */
+#cookiebar{
+  position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:60;
+  max-width:420px;background:var(--graphite);color:var(--paper);
+  border-bottom:4px solid var(--rule);
+  padding:1.1rem 1.2rem 1.2rem;box-shadow:0 6px 26px rgba(0,0,0,.28);
+  font-size:.9rem;line-height:1.5;
+}
+@media(max-width:719px){#cookiebar{bottom:72px}}
+#cookiebar b{font-family:"Archivo";font-weight:800;display:block;margin-bottom:.35rem;color:var(--white);font-size:1rem}
+#cookiebar a{color:var(--rule)}
+#cookiebar button{
+  margin-top:.9rem;width:auto;padding:.5rem 1.1rem;font-size:.92rem;
+  background:var(--rule);color:var(--graphite);border:none;border-radius:3px;
+  font-family:"Archivo";font-weight:700;cursor:pointer;
+}
+#cookiebar[hidden]{display:none}
+
 </style>
 </head>
 <body>
@@ -421,7 +439,7 @@ footer .credit a:hover{color:var(--rule);border-bottom-color:var(--rule)}
       <div>
         <a href="tel:+420775356068" class="big">775 356 068</a>
         <p class="sub">Po–Pá 7:00–18:00. Když to nezvedneme, jsme na střeše nebo pod vanou — zavoláme zpět.</p>
-        <p class="sub" style="margin-top:1.5rem"><a href="mailto:info@veskerestavebniprace.cz">info@veskerestavebniprace.cz</a><br>Děčín, Ústecký kraj</p>
+        <p class="sub" style="margin-top:1.5rem"><a href="mailto:veskerestavebniprace01@gmail.com">veskerestavebniprace01@gmail.com</a><br>Děčín, Ústecký kraj</p>
         <p class="sub" style="margin-top:1.2rem">Matěj Bernášek, IČO 19430248<br>Rekreační 5, Martiněves, 405 02 Jílové<br>Nejsme plátci DPH — uvedené ceny jsou konečné.</p>
       </div>
       <form action="https://api.web3forms.com/submit" method="POST">
@@ -463,6 +481,26 @@ footer .credit a:hover{color:var(--rule);border-bottom-color:var(--rule)}
 </footer>
 
 <a href="tel:+420775356068" class="callbar">Zavolat 775 356 068</a>
+
+<div id="cookiebar" hidden role="note" aria-label="Informace o cookies">
+  <b>Tenhle web vás nesleduje</b>
+  Neukládáme žádné analytické ani reklamní cookies a nepoužíváme nástroje třetích stran.
+  Nemáte tedy co odsouhlasit. Víc v <a href="zasady-osobnich-udaju.html">zásadách zpracování osobních údajů</a>.
+  <button type="button" id="cookieok">Rozumím</button>
+</div>
+<script>
+(function(){
+  var bar=document.getElementById('cookiebar');
+  var btn=document.getElementById('cookieok');
+  var KEY='mz-cookiebar-zavreno';
+  try{ if(localStorage.getItem(KEY)==='1') return; }catch(e){}
+  bar.hidden=false;
+  btn.addEventListener('click',function(){
+    bar.hidden=true;
+    try{ localStorage.setItem(KEY,'1'); }catch(e){}
+  });
+})();
+</script>
 
 </body>
 </html>
