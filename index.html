@@ -148,8 +148,20 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
 .step p{font-size:.95rem;color:var(--graphite-2);margin:0}
 
 /* --- fotky --- */
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-top:2rem}
-@media(min-width:760px){.gallery{grid-template-columns:repeat(3,1fr);gap:.75rem}}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:2rem}
+@media(min-width:760px){.ba{gap:1rem}}
+.ba figure{position:relative;margin:0;overflow:hidden;background:#E7E4DC}
+.ba img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.ba figcaption{
+  position:absolute;left:0;top:0;
+  font-family:"Archivo";font-weight:800;font-size:.8rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:.4rem .8rem;
+}
+.ba .pred figcaption{background:var(--graphite);color:var(--paper)}
+.ba .po figcaption{background:var(--rule);color:var(--graphite)}
+.ba-popis{font-size:.92rem;color:var(--pencil);margin-top:.9rem}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem;margin-top:2.5rem}
+@media(min-width:760px){.gallery{grid-template-columns:repeat(4,1fr);gap:.75rem}}
 .shot{position:relative;margin:0;background:#E7E4DC;overflow:hidden}
 .shot img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
 .shot figcaption{
@@ -334,19 +346,21 @@ footer .credit a:hover{color:var(--rule);border-bottom-color:var(--rule)}
 <section>
   <div class="wrap">
     <h2>Hotové zakázky</h2>
-    <p style="margin-top:.9rem">Fotky z realizací v Děčíně a okolí. U rekonstrukcí ukazujeme stav před i po.</p>
-    <div class="gallery">
-      <figure class="shot"><img src="img/koupelna-pred-rekonstrukci.webp" alt="Koupelna v panelovém bytě před rekonstrukcí" loading="lazy" width="1050" height="1400"><figcaption>Před</figcaption></figure>
-      <figure class="shot"><img src="img/bourani-bytoveho-jadra.webp" alt="Vybourané bytové jádro připravené na nové rozvody" loading="lazy" width="1050" height="1400"><figcaption>Bourání</figcaption></figure>
-      <figure class="shot"><img src="img/bourani-pricky.webp" alt="Bourání příčky bytového jádra" loading="lazy" width="1050" height="1400"><figcaption>Bourání</figcaption></figure>
-      <figure class="shot"><img src="img/nove-rozvody-vody-a-odpadu.webp" alt="Nové rozvody vody a odpadu ve vysekaných drážkách" loading="lazy" width="1050" height="1400"><figcaption>Rozvody</figcaption></figure>
-      <figure class="shot"><img src="img/obkladani-koupelny.webp" alt="Obkládání stěn koupelny velkoformátovým obkladem" loading="lazy" width="1050" height="1400"><figcaption>Obklady</figcaption></figure>
-      <figure class="shot"><img src="img/usazena-vana-a-obklad.webp" alt="Usazená vana a hotový obklad stěny" loading="lazy" width="1050" height="1400"><figcaption>Obklady</figcaption></figure>
-      <figure class="shot"><img src="img/predstena-podomitkova-nadrzka.webp" alt="Předstěna pro podomítkovou nádržku a nové rozvody" loading="lazy" width="1050" height="1400"><figcaption>Instalace</figcaption></figure>
-      <figure class="shot"><img src="img/koupelna-po-rekonstrukci.webp" alt="Hotová koupelna po kompletní rekonstrukci" loading="lazy" width="1050" height="1400"><figcaption>Hotovo</figcaption></figure>
-      <figure class="shot"><img src="img/koupelna-detail-obklad-vany.webp" alt="Detail obkladu vany a spárování" loading="lazy" width="1050" height="1400"><figcaption>Hotovo</figcaption></figure>
+    <p style="margin-top:.9rem">Rekonstrukce koupelny a bytového jádra v panelovém bytě — Děčín a okolí.</p>
+    <div class="ba">
+      <figure class="pred"><img src="img/koupelna-pred-rekonstrukci.webp" alt="Koupelna v panelovém bytě před rekonstrukcí — původní obklady a vana" loading="lazy"><figcaption>Před</figcaption></figure>
+      <figure class="po"><img src="img/koupelna-po-rekonstrukci.webp" alt="Stejná koupelna po kompletní rekonstrukci — nové obklady, vana a umyvadlo" loading="lazy"><figcaption>Po</figcaption></figure>
     </div>
-    <p class="note">Rekonstrukce koupelny a bytového jádra v panelovém bytě — od vybourání po předání.</p>
+    <p class="ba-popis">Stejná koupelna v panelovém bytě. Kompletní rekonstrukce včetně vybourání jádra, nových rozvodů vody a odpadu, obkladů, vany, umyvadla a WC.</p>
+
+    <h3 style="margin-top:3rem;font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil)">Jak to vzniká</h3>
+    <div class="gallery">
+      <figure class="shot"><img src="img/obkladani-koupelny.webp" alt="Obkládání koupelny velkoformátovým obkladem" loading="lazy"><figcaption>Obklady</figcaption></figure>
+      <figure class="shot"><img src="img/usazena-vana-a-obklad.webp" alt="Usazená vana a dokončený obklad stěny" loading="lazy"><figcaption>Obklady</figcaption></figure>
+      <figure class="shot"><img src="img/predstena-podomitkova-nadrzka.webp" alt="Předstěna pro podomítkovou nádržku a nové rozvody" loading="lazy"><figcaption>Instalace</figcaption></figure>
+      <figure class="shot"><img src="img/bourani-bytoveho-jadra.webp" alt="Vybourané bytové jádro připravené na nové rozvody" loading="lazy"><figcaption>Bourání</figcaption></figure>
+    </div>
+    <p class="note">Odbouráme, uděláme nové rozvody, obložíme a předáme uklizené. Bez čekání na další firmy.</p>
   </div>
 </section>
 
