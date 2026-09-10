@@ -184,9 +184,11 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0}
 .crew{display:grid;gap:2rem;align-items:start}
 @media(min-width:820px){.crew{grid-template-columns:1fr 1fr}}
 .portraits{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-.portrait{background:var(--graphite);color:var(--paper);padding:1.3rem 1.1rem 1.5rem;border-bottom:5px solid var(--rule)}
-.portrait b{display:block;font-family:"Archivo";font-weight:800;font-size:1.5rem;color:var(--white);letter-spacing:-.01em}
-.portrait span{display:block;font-size:.85rem;color:#AFB3B9;margin-top:.35rem}
+.portrait{background:var(--graphite);color:var(--paper);border-bottom:5px solid var(--rule);overflow:hidden}
+.portrait img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
+.portrait .jm{padding:.9rem 1rem 1.2rem}
+.portrait b{display:block;font-family:"Archivo";font-weight:800;font-size:1.35rem;color:var(--white);letter-spacing:-.01em}
+.portrait span{display:block;font-size:.82rem;color:#AFB3B9;margin-top:.3rem;line-height:1.35}
 
 /* --- faq --- */
 details{border-bottom:1px solid var(--line);padding:1.1rem 0}
@@ -406,8 +408,8 @@ footer .credit a:hover{color:var(--rule);border-bottom-color:var(--rule)}
     <h2>Kdo k vám přijede</h2>
     <div class="crew" style="margin-top:2rem">
       <div class="portraits">
-        <div class="portrait"><b>Matěj</b><span>Sádrokartony, omítky, dokončovky</span></div>
-        <div class="portrait"><b>Zdeněk</b><span>Zdění, obklady, instalace</span></div>
+        <div class="portrait"><img src="img/matej.webp" alt="Matěj, řemeslník z MZ Veškeré stavební práce" loading="lazy"><div class="jm"><b>Matěj</b><span>Sádrokartony, omítky, dokončovky</span></div></div>
+        <div class="portrait"><img src="img/zdenek.webp" alt="Zdeněk, řemeslník z MZ Veškeré stavební práce" loading="lazy"><div class="jm"><b>Zdeněk</b><span>Zdění, obklady, instalace</span></div></div>
       </div>
       <div>
         <p>Jsme Matěj a Zdeněk a pracujeme spolu přes pět let. Oba máme dost zkušeností na to, abychom koupelnu zvládli od vybourání po poslední silikon bez čekání na další firmy. Nejradši máme sádrokartony a omítky a je to na nich vidět.</p>
