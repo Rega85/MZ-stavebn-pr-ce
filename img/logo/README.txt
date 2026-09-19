@@ -1,4 +1,4 @@
-LOGO MZ — přehled souborů
+LOGO MZ REKONSTRUKCE — přehled souborů
 
 Logo je jednobarevné. Na tmavém podkladu bílé, na světlém grafitové.
 Žlutá zůstává firemní barvou, ale nese ji web a tiskoviny, ne samotná značka.

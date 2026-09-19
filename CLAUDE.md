@@ -1,6 +1,8 @@
-# MZ — Veškeré stavební práce (Děčín)
+# MZ rekonstrukce (Děčín)
 
 Klientský web pro dvoučlennou řemeslnou partu z Děčína.
+Obchodní název **MZ rekonstrukce** (shodně s doménou a Google profilem).
+Právně: Matěj Bernášek, IČO 19430248.
 Zakázka razdvaweb s pevnou cenou a termínem **jeden týden od dodání podkladů**.
 
 ## Co to je
@@ -40,8 +42,7 @@ posílání zpráv na tu jednu adresu, proti čemuž je ve formuláři honeypot 
 Původně byl v plánu Vercel serverless + Resend. Zahozeno kvůli rozpočtu klienta.
 Nevracet se k tomu bez důvodu.
 
-Po odeslání se přesměrovává na `dekujeme.html`. Adresa přesměrování je zatím
-vercel.app — **po převodu domény přepsat** na ostrou adresu.
+Po odeslání se přesměrovává na `dekujeme.html` na ostré doméně mzrekonstrukce.cz.
 
 **Souhlas není právní titul pro poptávkový formulář.** Zpracování stojí na
 čl. 6 odst. 1 písm. b) GDPR. Nepřidávej zaškrtávátko „souhlasím se
@@ -58,8 +59,9 @@ Bez těchto věcí se nespouští a neběží týdenní termín:
 - [ ] Elektro: mají odbornou způsobilost dle vyhl. 250/2021? Podle toho
       se upraví formulace v sekci služeb a v FAQ.
 - [ ] Doba uchování poptávek + jména zpracovatelů do zásad
-- [ ] Vyřešená doména (držitelem je klient, registrátor Media4Web/Webnode —
-      převod přes AuthInfo, u .cz zdarma a bez čekací lhůty)
+- [x] Doména: **mzrekonstrukce.cz** (Wedos, registrováno 19. 9. 2026)
+      Stará veskerestavebniprace.cz (Webnode) se opouští.
+      Pozor: klient má ještě mzreko**ntr**ukce.cz s překlepem — nepoužívat, max. přesměrovat.
 
 Místa k doplnění jsou v kódu označená a v zásadách žlutě podbarvená. Nemaž je,
 dokud nedorazí skutečné údaje — slouží jako kontrolní seznam při předání.
